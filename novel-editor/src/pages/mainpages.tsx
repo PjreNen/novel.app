@@ -1,12 +1,16 @@
-
+import type {Novel} from "../sbmain";
 import "../App.css";
 import {  Link } from 'react-router-dom';
 
 
 
 
-const MainPages = () => {
-    return (
+
+const MainPages = ({novels}:{novels:Novel[]}) => {
+    
+ 
+
+  return (
            <div className="main-page">
    
    <Link to="settingpages" className='config-area'>
@@ -19,9 +23,11 @@ const MainPages = () => {
     
     <div className='scroll-area'>
       <ul >
-        <li className='li' >小説のタイトル1</li>
-        <li>小説のタイトル2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
-        <li>3</li>
+      {novels.map((Novel)=>(
+
+        <li key={Novel.id}className='li' >{Novel.title}</li>
+        
+      ))}
       </ul>
     </div>
 
