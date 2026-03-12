@@ -25,7 +25,7 @@ const MainPages = ({novels}:{novels:Novel[]}) => {
       <ul >
       {novels.map((Novel)=>(
 
-        <li key={Novel.id}className='li' >{Novel.title}</li>
+        <li key={Novel.id} className="li"><Link to={`/novel-editor/book/${Novel.id}`} >{Novel.title}</Link></li>
         
       ))}
       </ul>

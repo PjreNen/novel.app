@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CreatePages from "./pages/createpages";
 import SettingPages from "./pages/settingpages";
 import MainPages from "./pages/mainpages";
+import BookPages from "./pages/bookpages";
+
 
 export interface Novel{
   id:string;
@@ -29,17 +31,20 @@ function App() {
     setnovel([...novels,{id:newid,title:newtitle,contents:newcontents}]);
   }
    
+  const updateNovel=(id:string,title:string,contents:string)=>{
+
+    setnovel(novels.map((n)=>{
+      if(n.id===id){
+        return{...n,title:title,contents:contents}
+
+      }else{return n;}
+
+    }))
+  }
   useEffect(() => {
   
   localStorage.setItem("myNovels", JSON.stringify(novels));
 }, [novels]);
-
-
-    
-    
-  
-
-
 
 return(
 
@@ -53,7 +58,8 @@ return(
      <Route path="/" element={<MainPages novels={novels} />} />
      <Route path="/settingpages" element={<SettingPages/>}/>
      <Route path="/createpages" element={<CreatePages addNovel={addNovel}/>}/>
-          
+     <Route path="/novel-editor/book/:id"   element={<BookPages novels={novels} updateNovel={updateNovel}/>}/>
+
     </Routes>
     </BrowserRouter>
   
