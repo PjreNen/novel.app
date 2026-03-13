@@ -32,7 +32,7 @@ const CreatePages = ({addNovel}:{addNovel:(id:string,title:string,contents:strin
     
    
    <Link to="/" className='config-area'>
-    ＋
+    戻る
     </Link>
     
     </div>

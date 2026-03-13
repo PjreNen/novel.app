@@ -6,7 +6,7 @@ import {  Link } from 'react-router-dom';
 
 
 
-const MainPages = ({novels}:{novels:Novel[]}) => {
+const MainPages = ({novels,deleteNovel}:{novels:Novel[],deleteNovel:(idtoDelete:string)=>void}) => {
     
  
 
@@ -25,7 +25,8 @@ const MainPages = ({novels}:{novels:Novel[]}) => {
       <ul >
       {novels.map((Novel)=>(
 
-        <li key={Novel.id} className="li"><Link to={`/novel-editor/book/${Novel.id}`} >{Novel.title}</Link></li>
+        <li key={Novel.id} className="li"><Link to={`/novel-editor/book/${Novel.id}`} >{Novel.title}</Link>
+        <button onClick={() => deleteNovel(Novel.id)}>🗑️</button></li>
         
       ))}
       </ul>

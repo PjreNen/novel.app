@@ -46,6 +46,13 @@ function App() {
   localStorage.setItem("myNovels", JSON.stringify(novels));
 }, [novels]);
 
+
+const deleteNovel=(idtoDelete:string)=>{
+ 
+  if(window.confirm("本当に削除しますか？")){
+   setnovel(novels.filter(novels=>novels.id!==idtoDelete)) ;
+};}
+
 return(
 
 
@@ -55,10 +62,10 @@ return(
     <Routes>
   
     
-     <Route path="/" element={<MainPages novels={novels} />} />
+     <Route path="/" element={<MainPages novels={novels} deleteNovel={deleteNovel} />} />
      <Route path="/settingpages" element={<SettingPages/>}/>
      <Route path="/createpages" element={<CreatePages addNovel={addNovel}/>}/>
-     <Route path="/novel-editor/book/:id"   element={<BookPages novels={novels} updateNovel={updateNovel}/>}/>
+     <Route path="/novel-editor/book/:id"   element={<BookPages novels={novels} updateNovel={updateNovel} />}/>
 
     </Routes>
     </BrowserRouter>
