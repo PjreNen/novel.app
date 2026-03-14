@@ -39,7 +39,7 @@ const BookPages=({novels,updateNovel}:{novels:Novel[],updateNovel:(id:string,tit
 
               
                
-              <div className="contents-area"ref={inputref} contentEditable
+              <div className="contents-area" style={{ fontSize: `${context?.fontSize}px` }} ref={inputref} contentEditable
               onInput={()=>{
                updateNovel(FoundId.id,FoundId.title,inputref.current?.innerText||"")
               }}

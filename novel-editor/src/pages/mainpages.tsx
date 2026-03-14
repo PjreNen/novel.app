@@ -28,7 +28,7 @@ const MainPages = ({novels,deleteNovel}:{novels:Novel[],deleteNovel:(idtoDelete:
       <ul >
       {novels.map((Novel)=>(
 
-        <li key={Novel.id} className="li"><Link to={`/novel-editor/book/${Novel.id}`} >{Novel.title}</Link>
+        <li key={Novel.id} ><Link to={`/novel-editor/book/${Novel.id}`} >{Novel.title}</Link>
         <button onClick={() => deleteNovel(Novel.id)}>🗑️</button></li>
         
       ))}

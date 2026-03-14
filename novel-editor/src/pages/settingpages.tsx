@@ -16,8 +16,7 @@ const SettingPages = () => {
         
         <div className={currentclass}>
             <h1 className="config-area">設定</h1>
-
-
+            <h2>テーマ設定</h2>
             <button onClick={context?.setPagetoDafult}>
                 Dafult
             </button>
@@ -30,7 +29,12 @@ const SettingPages = () => {
              <button onClick={context?.setPagetoLightGreen}>
                 L.Green
             </button>
-        
+        <h2>フォントサイズ設定</h2>
+        <input
+        type="Number"
+         value={context?.fontSize} 
+      onChange={(e) => context?.updateFontSize(Number(e.target.value))} 
+    />
 
         <Link to="/" className='Create-area'>
     戻る

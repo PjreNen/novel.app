@@ -54,7 +54,7 @@
   min-height: 100vh;       
   padding: 40px;          
   font-size: 30px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(63, 61, 61);
 }
 .lightgreen-page {
   display: flex;          
@@ -93,11 +93,10 @@
     
 }
 .scroll-area{
-    border: #ccc;
+    border: #969d9e;
     max-height: 300px;
     max-width: 600px;
-    background-color: rgb(241, 228, 211);
-   
+    
     overflow-y: auto;
     overflow-x: auto;
 }
