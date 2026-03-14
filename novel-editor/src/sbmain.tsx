@@ -5,7 +5,7 @@ import CreatePages from "./pages/createpages";
 import SettingPages from "./pages/settingpages";
 import MainPages from "./pages/mainpages";
 import BookPages from "./pages/bookpages";
-
+import { Areaoder } from './Chang.css';
 
 export interface Novel{
   id:string;
@@ -56,7 +56,7 @@ const deleteNovel=(idtoDelete:string)=>{
 return(
 
 
-
+<Areaoder>
   
     <BrowserRouter>
     <Routes>
@@ -69,7 +69,7 @@ return(
 
     </Routes>
     </BrowserRouter>
-  
+  </Areaoder>
 );
 
 

@@ -1,13 +1,14 @@
 import {  Link } from 'react-router-dom';
 import "../App.css";
 import{useState} from 'react';
- 
-
+import { Areaoder,Areacontext } from '../Chang.css';
+import { useContext } from 'react';
 
 
 const CreatePages = ({addNovel}:{addNovel:(id:string,title:string,contents:string)=>void}) => {
     
-
+ const context=useContext(Areacontext);
+    const currentclass=context?.areaClass||'create-page';
 
       const [titlename,settitle]=useState("")
        
@@ -17,7 +18,7 @@ const CreatePages = ({addNovel}:{addNovel:(id:string,title:string,contents:strin
         settitle("")
       };
     return(
-        <div className="main-page">
+        <div className={currentclass}>
            <input
            type="text"
            value={titlename}

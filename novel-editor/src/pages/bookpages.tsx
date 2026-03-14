@@ -2,8 +2,16 @@ import { useParams } from 'react-router-dom';
 import type {Novel} from '../sbmain';
 import { useState ,useEffect,useRef} from 'react'
 import {  Link } from 'react-router-dom';
+import { Areaoder,Areacontext } from '../Chang.css';
+import { useContext } from 'react';
+
 const BookPages=({novels,updateNovel}:{novels:Novel[],updateNovel:(id:string,title:string,contents:string)=>void})=>{
-    const {id}=useParams();
+    
+    const context=useContext(Areacontext);
+    const currentclass=context?.areaClass||'book-page';
+   
+   
+   const {id}=useParams();
    
        const FoundId=novels.find((Novel)=>Novel.id===id);
         if(!FoundId)return(<div>データがありません</div>)
@@ -26,12 +34,12 @@ const BookPages=({novels,updateNovel}:{novels:Novel[],updateNovel:(id:string,tit
 
 
         return(
-            <div className='main-page'>
+            <div className={currentclass}>
                <div className='title-area'>{FoundId.title}</div>
 
               
                
-              <div ref={inputref} contentEditable
+              <div className="contents-area"ref={inputref} contentEditable
               onInput={()=>{
                updateNovel(FoundId.id,FoundId.title,inputref.current?.innerText||"")
               }}
