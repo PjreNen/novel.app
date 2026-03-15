@@ -2,8 +2,9 @@ import { useParams } from 'react-router-dom';
 import type {Novel} from '../sbmain';
 import { useState ,useEffect,useRef} from 'react'
 import {  Link } from 'react-router-dom';
-import { Areaoder,Areacontext } from '../Chang.css';
+import { Areacontext } from '../Chang.css';
 import { useContext } from 'react';
+import { Snippmanager } from './commandchange';
 
 const BookPages=({novels,updateNovel}:{novels:Novel[],updateNovel:(id:string,title:string,contents:string)=>void})=>{
     
@@ -16,33 +17,45 @@ const BookPages=({novels,updateNovel}:{novels:Novel[],updateNovel:(id:string,tit
        const FoundId=novels.find((Novel)=>Novel.id===id);
         if(!FoundId)return(<div>データがありません</div>)
 
-             const [newcontents,setnewContents]=useState(FoundId.contents);
-
-             useEffect(()=>{
-                updateNovel(FoundId.id,FoundId.title,newcontents)
-             },[newcontents])
-
              const inputref=useRef<HTMLDivElement>(null);
-
-             useEffect(()=>{
+              useEffect(()=>{
                if(inputref.current){
                   inputref.current.innerText=FoundId.contents;
                }
 
              },[])
 
+             const {snippets,updateSnippets,F_keys}=Snippmanager(inputref);
+
 
 
         return(
             <div className={currentclass}>
-               <div className='title-area'>{FoundId.title}</div>
 
-              
-               
-              <div className="contents-area" style={{ fontSize: `${context?.fontSize}px` }} ref={inputref} contentEditable
+               <div style={{padding:'20px',maxWidth:'800px',margin:'0 auto'}}>
+                  <h2>コマンド設定</h2>
+                  <div className='command-area'>
+                     {F_keys.map(key=>(
+                        <div key={key}style={{display:'flex',flexDirection:'column'}}>
+                           <span style={{fontSize:'12px',fontWeight:'bold'}}>{key}</span>
+                           <input
+                           type="text"
+                           value={snippets[key]||''}
+                           onChange={(e)=>updateSnippets(key,e.target.value)}
+                           />
+                           </div>
+                     ))}
+                  </div>
+                  
+
+               <div className='title-area'>{FoundId.title}</div>
+              <div  className="contents-area" style={{ fontSize: `${context?.fontSize}px` }} ref={inputref} contentEditable
               onInput={()=>{
-               updateNovel(FoundId.id,FoundId.title,inputref.current?.innerText||"")
-              }}
+               
+               updateNovel(FoundId.id,FoundId.title,inputref.current?.innerText||"");
+               
+            }
+              }
               
               
                 />
@@ -50,6 +63,7 @@ const BookPages=({novels,updateNovel}:{novels:Novel[],updateNovel:(id:string,tit
                <Link to="/" className='config-area'>
                戻る
                </Link>
+               </div>
 
 
 
