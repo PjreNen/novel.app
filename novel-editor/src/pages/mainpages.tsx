@@ -19,9 +19,6 @@ const MainPages = ({novels,deleteNovel}:{novels:Novel[],deleteNovel:(idtoDelete:
    <Link to="settingpages" className='config-area'>
     ⚙
     </Link>
-    <div>
-      <input type="text" />
-    </div>
 
     
     <div className='scroll-area'>
