@@ -24,13 +24,13 @@ function App() {
     })
 
    
-    
+    //追加
     const addNovel=(newid:string,newtitle:string,newcontents:string)=>{
     if(!newid)return;
 
     setnovel([...novels,{id:newid,title:newtitle,contents:newcontents}]);
   }
-   
+ //更新  
   const updateNovel=(id:string,title:string,contents:string)=>{
 
     setnovel(novels.map((n)=>{
@@ -41,12 +41,13 @@ function App() {
 
     }))
   }
+  //保存
   useEffect(() => {
   
   localStorage.setItem("myNovels", JSON.stringify(novels));
 }, [novels]);
 
-
+//削除
 const deleteNovel=(idtoDelete:string)=>{
  
   if(window.confirm("本当に削除しますか？")){

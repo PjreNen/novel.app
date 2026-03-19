@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-
+//f1からf12まで生成
 const F_keys=Array.from({length:12},(_, i)=> `F${i + 1}`);
 export const Snippmanager=(externalRef:React.RefObject<HTMLDivElement|null>)=>{
     const [snippets,setSnippets]=useState<{[key:string]:string}>(()=>{
@@ -48,10 +48,11 @@ export const Snippmanager=(externalRef:React.RefObject<HTMLDivElement|null>)=>{
            externalRef.current?.dispatchEvent(new Event('input', { bubbles: true }));
         }
     };
+
     window.addEventListener('keydown',Pickkeydown);
     return()=>window.removeEventListener('keydown',Pickkeydown);
     },[snippets,externalRef]);
-
+//更新
     const updateSnippets=(key:string,value:string)=>{
         setSnippets(prev=>({...prev,[key]:value}));
     };
